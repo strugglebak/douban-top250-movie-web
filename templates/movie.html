@@ -1,0 +1,22 @@
+$def with (movie, count)
+$ casts = movie.casts.split(',')
+$ directors = movie.directors.split(',')
+
+<h4> <a href="/">返回首页</a> </h4>
+
+$if count > 0:
+	<h1> $movie.title </h1>
+	<hr>
+	<img src="/static/poster/$(movie.id).jpg">
+	<p>电影原称: $movie.origin</p>
+	<p>年代: $movie.year</p>
+	<p>导演:
+	$for director in directors:
+		<a href="/director/$director">$director</a>
+	</p>
+	<p>主演:
+	$for cast in casts:
+		<a href="/cast/$cast">$cast</a>	 
+	</p>
+$else:
+	<p>找不到啦，搜索君没吃饭~~~</p>
